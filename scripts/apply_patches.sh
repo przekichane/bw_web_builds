@@ -52,4 +52,7 @@ replace_embedded_svg_icon \
 echo "Using patch: ${PATCH_NAME}"
 git apply "../patches/${PATCH_NAME}" --reject
 
+echo "Applying disable_checkForBreaches.patch"
+git apply "../patches/disable_checkForBreaches.patch"
+
 echo "Patching successful!"

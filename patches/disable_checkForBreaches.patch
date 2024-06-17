@@ -1,0 +1,99 @@
+diff --git a/apps/browser/src/auth/popup/register.component.html b/apps/browser/src/auth/popup/register.component.html
+index 619f7b64ab..97491141c9 100644
+--- a/apps/browser/src/auth/popup/register.component.html
++++ b/apps/browser/src/auth/popup/register.component.html
+@@ -108,17 +108,6 @@
+       <div id="hintHelp" class="box-footer">
+         {{ "masterPassHintDesc" | i18n }}
+       </div>
+-      <div class="box-content row-top-padding">
+-        <div
+-          class="box-content-row box-content-row-checkbox box-content-row-checkbox-left box-content-row-word-break"
+-          appBoxRow
+-        >
+-          <input type="checkbox" id="checkForBreaches" formControlName="checkForBreaches" />
+-          <label for="checkForBreaches">
+-            {{ "checkForBreaches" | i18n }}
+-          </label>
+-        </div>
+-      </div>
+     </div>
+     <div [hidden]="!showCaptcha()">
+       <iframe id="hcaptcha_iframe" height="80" sandbox="allow-scripts allow-same-origin"></iframe>
+diff --git a/apps/desktop/src/auth/register.component.html b/apps/desktop/src/auth/register.component.html
+index fb4ec30d40..f97329a63e 100644
+--- a/apps/desktop/src/auth/register.component.html
++++ b/apps/desktop/src/auth/register.component.html
+@@ -119,12 +119,6 @@
+     </div>
+ 
+     <div class="box last">
+-      <div class="box-footer checkbox">
+-        <input type="checkbox" id="checkForBreaches" formControlName="checkForBreaches" />
+-        <label for="checkForBreaches">
+-          {{ "checkForBreaches" | i18n }}
+-        </label>
+-      </div>
+       <div class="box-footer checkbox" *ngIf="showTerms">
+         <input type="checkbox" id="acceptPolicies" formControlName="acceptPolicies" />
+         <label for="acceptPolicies">
+diff --git a/apps/web/src/app/auth/register-form/register-form.component.html b/apps/web/src/app/auth/register-form/register-form.component.html
+index a646d5e9a7..0c6253a5fb 100644
+--- a/apps/web/src/app/auth/register-form/register-form.component.html
++++ b/apps/web/src/app/auth/register-form/register-form.component.html
+@@ -93,17 +93,6 @@
+     <div [hidden]="!showCaptcha()">
+       <iframe id="hcaptcha_iframe" height="80" sandbox="allow-scripts allow-same-origin"></iframe>
+     </div>
+-    <div class="tw-mb-4 tw-flex tw-items-start">
+-      <input
+-        class="mt-1"
+-        type="checkbox"
+-        bitCheckbox
+-        id="checkForBreaches"
+-        name="CheckBreach"
+-        formControlName="checkForBreaches"
+-      />
+-      <bit-label for="checkForBreaches"> {{ "checkForBreaches" | i18n }}</bit-label>
+-    </div>
+     <div class="tw-mb-3 tw-flex tw-items-start" *ngIf="showTerms">
+       <input
+         class="mt-1"
+diff --git a/apps/web/src/app/auth/settings/change-password.component.html b/apps/web/src/app/auth/settings/change-password.component.html
+index 37a4ad5b59..1997abe262 100644
+--- a/apps/web/src/app/auth/settings/change-password.component.html
++++ b/apps/web/src/app/auth/settings/change-password.component.html
+@@ -73,20 +73,6 @@
+       </div>
+     </div>
+   </div>
+-  <div class="form-group">
+-    <div class="form-check">
+-      <input
+-        class="form-check-input"
+-        type="checkbox"
+-        id="checkForBreaches"
+-        name="checkForBreaches"
+-        [(ngModel)]="checkForBreaches"
+-      />
+-      <label class="form-check-label" for="checkForBreaches">
+-        {{ "checkForBreaches" | i18n }}
+-      </label>
+-    </div>
+-  </div>
+   <div class="form-group">
+     <div class="form-check">
+       <input
+diff --git a/libs/angular/src/auth/components/register.component.ts b/libs/angular/src/auth/components/register.component.ts
+index f7c0a76509..8065bffe02 100644
+--- a/libs/angular/src/auth/components/register.component.ts
++++ b/libs/angular/src/auth/components/register.component.ts
+@@ -61,7 +61,7 @@ export class RegisterComponent extends CaptchaProtectedComponent implements OnIn
+           ),
+         ],
+       ],
+-      checkForBreaches: [true],
++      checkForBreaches: [false],
+       acceptPolicies: [false, [this.acceptPoliciesValidation()]],
+     },
+     {
